@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovers trend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("https://watermark.lovepik.com/photo/40189/4859.jpg_wh1200.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            animation: anim 5s infinite linear;
+            transition: all .3s;
+        }
+
+        h1 {
+            animation: anim 5s infinite linear;
+            color: #a44f4fcd;
+        }
+
+        @keyframes anim {
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff4b;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #a44f4fcd;
+            border: 1px solid #a44f4fcd;
+            outline: none;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .image-container img {
+            width: 150px;
+            height: auto;
+            display: none;
+            margin: 0 auto;
+        }
+
+        .image-container img.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Choose your quality :)</h1>
+        <select id="qualitySelect">
+            <option value="">Choose...</option>
+            <option value="144p">144p</option>
+            <option value="360p">360p</option>
+            <option value="720p">720p</option>
+            <option value="1440p">1440p</option>
+        </select>
+
+        <div class="image-container" id="imageContainer"></div>
+    </div>
+
+    <script>
+        const qualitySelect = document.getElementById('qualitySelect');
+        const imageContainer = document.getElementById('imageContainer');
+
+        const images = {
+            '144p': '144.png',
+            '360p': '360.png',
+            '720p': '720.png',
+            '1440p': '1440.png'
+        };
+
+        qualitySelect.addEventListener('change', function () {
+            const selectedQuality = qualitySelect.value;
+
+            imageContainer.innerHTML = '';
+
+            if (selectedQuality && images[selectedQuality]) {
+                const img = document.createElement('img');
+                img.src = images[selectedQuality];
+                img.alt = selectedQuality + ' rasm';
+                img.classList.add('active');
+
+                imageContainer.appendChild(img);
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
